@@ -77,6 +77,7 @@ namespace LAB1_NETD3202_ANDRE_AGRIPPA
                                 MessageBox.Show("Budget remaining must be a numeric entry greater than 0");
                                 txtBudget.Text = "";
                                 txtBudget.SelectAll();
+
                             }
                         }
                         else
