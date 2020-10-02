@@ -6,21 +6,24 @@ using System.Text;
 //keep the default namespace too, BillingApp is just the name of my project.
 namespace LAB1_NETD3202_ANDRE_AGRIPPA
 {
-    public class Program
+    public class Project
     {
         //First private data member
         private string projectName;
         private double budget;
-        private double spent;
+        private double amountSpent;
         private double hoursRemaining;
-        private string status;
+        private string projectStatus;
         //Complete the rest (there are four more mentioned in the description).
         //constructor, you need to complete it this is a no parameter constructor
-        public Program()
+        public Project(string projectName, double budget, double amountSpent, double hoursRemaining, string projectStatus)
         {
-            
+            this.projectName = projectName;
+            this.budget = budget;
+            this.amountSpent = amountSpent;
+            this.hoursRemaining = hoursRemaining;
+            this.projectStatus = projectStatus;
         }
-
         //Getters and setters for Project Name
         public string ProjectName
         {
@@ -37,8 +40,8 @@ namespace LAB1_NETD3202_ANDRE_AGRIPPA
         //Getters and setters for Spent
         public double Spent
         {
-            get { return this.spent; }
-            set { this.spent = value; }
+            get { return this.amountSpent; }
+            set { this.amountSpent = value; }
         }
         //Getters and setters for HoursRemaining
         public double HoursRemaining
