@@ -1,0 +1,42 @@
+﻿<Window x:Class="LAB1_NETD3202_ANDRE_AGRIPPA.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:LAB1_NETD3202_ANDRE_AGRIPPA"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="500" Width="800">
+
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <StackPanel Grid.Column="0" Margin="50">
+            <Label x:Name="lblProjectName" Content="Project name:" Target="{Binding ElementName=txtProjectName}"/>
+            <TextBox x:Name ="txtProjectName" />
+            <Label x:Name="lblBudget" Content="Budget:" Target="{Binding ElementName=txtBudget}" />
+            <TextBox x:Name ="txtBudget" />
+            <Label x:Name="lblSpent" Content="Spent:" Target="{Binding ElementName=txtSpent}"/>
+            <TextBox x:Name ="txtSpent" />
+            <Label x:Name="lblHoursRemaining" Content="Est Hours Remaining:" Target="{Binding ElementName=txtHoursRemaining}"/>
+            <TextBox x:Name ="txtHoursRemaining" />
+            <Label x:Name="lblStatus" Content="Status:"/>
+            <ComboBox x:Name="cmbStatus">
+                <ComboBoxItem x:Name ="cmbItemRequirements" IsSelected="True">Requirements</ComboBoxItem>
+                <ComboBoxItem x:Name ="cmbItemDesign">Design</ComboBoxItem>
+                <ComboBoxItem x:Name ="cmbItemImplementation">Implementation</ComboBoxItem>
+                <ComboBoxItem x:Name ="cmbItemTesting">Testing</ComboBoxItem>
+                <ComboBoxItem x:Name ="cmbItemDeployment">Deployment</ComboBoxItem>
+                <ComboBoxItem x:Name ="cmbItemCompleted">Completed</ComboBoxItem>
+            </ComboBox>
+            <Button x:Name="btnCreate" Content="Create Project" Margin="50" Click="btnCreate_Click"/>
+        </StackPanel>
+        <StackPanel Grid.Column="1" Margin="50">
+            <ListBox x:Name ="lsbProjects" Margin="50" />
+        </StackPanel>
+
+    </Grid>
+
+</Window>
