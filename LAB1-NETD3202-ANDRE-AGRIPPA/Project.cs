@@ -1,22 +1,28 @@
-﻿//These are default (keep them!)
+﻿/*
+ * Name: Andre Agrippa
+ * Date: 10/02/2020
+ * Course: NETD 3202
+ * Purpose: Project class, has all the attrivutes, getters and setters.
+ * File: Project.cs
+ */
 using System;
 using System.Collections.Generic;
 using System.Runtime.InteropServices.WindowsRuntime;
 using System.Text;
-//keep the default namespace too, BillingApp is just the name of my project.
+
 namespace LAB1_NETD3202_ANDRE_AGRIPPA
 {
     public class Project
     {
-        //First private data member
+        //Private data members for a Project
         private string projectName;
         private double budget;
         private double amountSpent;
         private double hoursRemaining;
-        private string projectStatus;
-        //Complete the rest (there are four more mentioned in the description).
-        //constructor, you need to complete it this is a no parameter constructor
-        public Project(string projectName, double budget, double amountSpent, double hoursRemaining, string projectStatus)
+        private int projectStatus;
+        
+        //Pass in attributes to class Project
+        public Project(string projectName, double budget, double amountSpent, double hoursRemaining, int projectStatus)
         {
             this.projectName = projectName;
             this.budget = budget;
@@ -46,15 +52,14 @@ namespace LAB1_NETD3202_ANDRE_AGRIPPA
         //Getters and setters for HoursRemaining
         public double HoursRemaining
         {
-            get { return this.HoursRemaining; }
-            set { this.HoursRemaining = value; }
+            get { return this.hoursRemaining; }
+            set { this.hoursRemaining = value; }
         }
         //Getters and setters for Status
-        public double Status
+        public int Status
         {
-            get { return this.Status; }
-            set { this.Status = value; }
+            get { return this.projectStatus; }
+            set { this.projectStatus = value; }
         }
-
     }
 }

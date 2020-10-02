@@ -1,4 +1,10 @@
-﻿using System;
+﻿/*
+ * Name: Andre Agrippa
+ * Date: 10/02/2020
+ * Course: NETD 3202
+ * Purpose: Main window for project create. Validates user input and makes an entry for a project.
+ */
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.NetworkInformation;
@@ -17,34 +23,45 @@ using System.Windows.Shapes;
 namespace LAB1_NETD3202_ANDRE_AGRIPPA
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// MainWindow.xaml.cs window, opens when application first starts
     /// </summary>
     public partial class MainWindow : Window
     {
+        //Initialize MainWindow
         public MainWindow()
         {
             InitializeComponent();
         }
 
+        //Create a new list of object project
         private static List<Project> projects = new List <Project>();
+
+        //Called when user double clicks the create button
         private void btnCreate_Click(object sender, RoutedEventArgs e)
         {
+            //Temporary variables used for projects
             string projectName;
             double budget;
             double spent;
             double hoursRemaining;
-            string status;
+            int status;
 
-            status = cmbStatus.Text;
+            //status is equal to whatever user selected from combo box
+            status = cmbStatus.SelectedIndex;
 
+            //If textbox project name is not empty
             if (txtProjectName.Text.Trim() != string.Empty)
             {
+                //Assign project name to entered text
                 projectName = txtProjectName.Text;
 
+                //If textbox budget can be parsed to double budget
                 if (double.TryParse(txtBudget.Text.Trim(), out budget))
                 {
+                    //If textbox spent can be parsed to double spent
                     if (double.TryParse(txtSpent.Text.Trim(), out spent))
                     {
+                        //If textbox hours remaining can be parsed to double hoursRemaining
                         if (double.TryParse(txtHoursRemaining.Text.Trim(), out hoursRemaining))
                         {
                             //everything is able to parse, make sure no negative numbers
@@ -55,16 +72,25 @@ namespace LAB1_NETD3202_ANDRE_AGRIPPA
                                     if (hoursRemaining >= 0)
                                     {
                                         //Everything valid
+                                        //If hours remaining is 0
                                         if (hoursRemaining == 0)
                                         {
-                                            //make cmb equal to completed
+                                            //Make combo box completed, assign index number
                                             cmbStatus.SelectedIndex = 5;
-                                            status = cmbStatus.Text;
+                                            status = cmbStatus.SelectedIndex;
                                         }
-
+                                        //If combo box selected completed
+                                        if (cmbStatus.SelectedIndex == 5)
+                                        {
+                                            //make hours remaining = 0 and change text to 0
+                                            hoursRemaining = 0;
+                                            txtHoursRemaining.Text = hoursRemaining.ToString();
+                                        }
+                                        //Add to the project list, clear listbox projects items
                                         projects.Add(new Project(projectName, budget, spent, hoursRemaining, status));
                                         lsbProjects.Items.Clear();
 
+                                        //Add the project name to list box
                                         for (int i = 0; i < projects.Count; i++)
                                         {
                                             lsbProjects.Items.Add(projects[i].ProjectName);
@@ -86,7 +112,6 @@ namespace LAB1_NETD3202_ANDRE_AGRIPPA
                                     txtSpent.Focus();
                                 }
                             }
-                            
                             else
                             {
                                 //If budget is less than 0
@@ -128,5 +153,14 @@ namespace LAB1_NETD3202_ANDRE_AGRIPPA
             }
             
         }//End button click
+
+        //For when the user double clicks on a project in the list box
+        private void lsbProjects_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            //Get index of project selected and pass that project to a new window
+            int selectedIndex = lsbProjects.SelectedIndex;
+            winProjectDisplay newWindowDisplay = new winProjectDisplay(projects[selectedIndex]);
+            newWindowDisplay.Show();
+        }
     }//End class
 }//End namespace

@@ -1,19 +1,22 @@
-﻿<Window x:Class="LAB1_NETD3202_ANDRE_AGRIPPA.MainWindow"
+﻿<!--Beginning of window, variable names found here-->
+<Window x:Name="Window" x:Class="LAB1_NETD3202_ANDRE_AGRIPPA.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:LAB1_NETD3202_ANDRE_AGRIPPA"
         mc:Ignorable="d"
-        Title="MainWindow" Height="500" Width="800">
-
-
-    <Grid>
+        Title="CODE IT INC" Height="500" Width="800">
+    <!--Beginning of Grid, this is where I place anything going on the window-->
+    <Grid x:Name="winMainWindow">
+        <!--Defining column definition-->
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
+        <!--Beginning of stack panel-->
         <StackPanel Grid.Column="0" Margin="50">
+            <!--All content in stack panel goes here-->
             <Label x:Name="lblProjectName" Content="Project name:" Target="{Binding ElementName=txtProjectName}"/>
             <TextBox x:Name ="txtProjectName" />
             <Label x:Name="lblBudget" Content="Budget:" Target="{Binding ElementName=txtBudget}" />
@@ -33,10 +36,14 @@
             </ComboBox>
             <Button x:Name="btnCreate" Content="Create Project" Margin="50" Click="btnCreate_Click"/>
         </StackPanel>
+        <!--End of stack panel-->
+        <!--Beginning of stack panel-->
         <StackPanel Grid.Column="1" Margin="50">
-            <ListBox x:Name ="lsbProjects" Margin="50" />
+            <ListBox x:Name ="lsbProjects" Margin="50" MouseDoubleClick="lsbProjects_MouseDoubleClick">
+            </ListBox>
         </StackPanel>
-
+        <!--End of stack panel-->
     </Grid>
-
+    <!--End of grid-->
 </Window>
+<!-- End of window-->
