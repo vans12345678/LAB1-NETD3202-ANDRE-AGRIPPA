@@ -39,6 +39,21 @@ namespace LAB1_NETD3202_ANDRE_AGRIPPA
         //Called when user double clicks the create button
         private void btnCreate_Click(object sender, RoutedEventArgs e)
         {
+            projects = ProjectCreate();
+
+        }//End button click
+
+        //For when the user double clicks on a project in the list box
+        private void lsbProjects_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            //Get index of project selected and pass that project to a new window
+            int selectedIndex = lsbProjects.SelectedIndex;
+            winProjectDisplay newWindowDisplay = new winProjectDisplay(projects[selectedIndex]);
+            newWindowDisplay.Show();
+        }
+
+        public List<Project> ProjectCreate()
+        {
             //Temporary variables used for projects
             string projectName;
             double budget;
@@ -79,6 +94,7 @@ namespace LAB1_NETD3202_ANDRE_AGRIPPA
                                             cmbStatus.SelectedIndex = 5;
                                             status = cmbStatus.SelectedIndex;
                                         }
+
                                         //If combo box selected completed
                                         if (cmbStatus.SelectedIndex == 5)
                                         {
@@ -86,6 +102,7 @@ namespace LAB1_NETD3202_ANDRE_AGRIPPA
                                             hoursRemaining = 0;
                                             txtHoursRemaining.Text = hoursRemaining.ToString();
                                         }
+
                                         //Add to the project list, clear listbox projects items
                                         projects.Add(new Project(projectName, budget, spent, hoursRemaining, status));
                                         lsbProjects.Items.Clear();
@@ -95,6 +112,7 @@ namespace LAB1_NETD3202_ANDRE_AGRIPPA
                                         {
                                             lsbProjects.Items.Add(projects[i].ProjectName);
                                         }
+
                                     }
                                     //If hours remaining is negative
                                     else
@@ -151,16 +169,10 @@ namespace LAB1_NETD3202_ANDRE_AGRIPPA
                 txtProjectName.SelectAll();
                 txtProjectName.Focus();
             }
-            
-        }//End button click
 
-        //For when the user double clicks on a project in the list box
-        private void lsbProjects_MouseDoubleClick(object sender, MouseButtonEventArgs e)
-        {
-            //Get index of project selected and pass that project to a new window
-            int selectedIndex = lsbProjects.SelectedIndex;
-            winProjectDisplay newWindowDisplay = new winProjectDisplay(projects[selectedIndex]);
-            newWindowDisplay.Show();
-        }
+            //Returns a valid project entry
+            return projects;
+
+        }//End ProjectCreate
     }//End class
 }//End namespace

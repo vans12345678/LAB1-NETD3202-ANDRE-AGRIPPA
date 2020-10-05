@@ -45,5 +45,10 @@ namespace LAB1_NETD3202_ANDRE_AGRIPPA
             //Will close the project dispay window
             this.Close();
         }
+
+        private void btnAlter_Click(object sender, RoutedEventArgs e)
+        {
+            //When this is clicked, sets the project attributes to user input
+        }
     }
 }

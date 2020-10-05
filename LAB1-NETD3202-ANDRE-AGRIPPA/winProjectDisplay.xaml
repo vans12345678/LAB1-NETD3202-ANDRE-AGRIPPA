@@ -13,15 +13,15 @@
         <StackPanel  Margin="20">
             <!-- Similar to the first window, changed variable names-->
                 <Label x:Name="lblProjectNameOut" Content="Project name:" Target="{Binding ElementName=txtProjectName}"/>
-            <TextBox x:Name ="txtProjectNameOut" IsEnabled="False" />
+            <TextBox x:Name ="txtProjectNameOut" IsEnabled="True" />
             <Label x:Name="lblBudgetOut" Content="Budget:" Target="{Binding ElementName=txtBudget}" />
-            <TextBox x:Name ="txtBudgetOut" IsEnabled="False" />
+            <TextBox x:Name ="txtBudgetOut" IsEnabled="True" />
             <Label x:Name="lblSpentOut" Content="Spent:" Target="{Binding ElementName=txtSpent}"/>
-            <TextBox x:Name ="txtSpentOut" IsEnabled="False" />
+            <TextBox x:Name ="txtSpentOut" IsEnabled="True" />
             <Label x:Name="lblHoursRemainingOut" Content="Est Hours Remaining:" Target="{Binding ElementName=txtHoursRemaining}"/>
-            <TextBox x:Name ="txtHoursRemainingOut" IsEnabled="False" />
+            <TextBox x:Name ="txtHoursRemainingOut" IsEnabled="True" />
             <Label x:Name="lblStatusOut" Content="Status:"/>
-            <ComboBox x:Name="cmbStatusOut" IsEnabled="False">
+            <ComboBox x:Name="cmbStatusOut" IsEnabled="True">
                 <ComboBoxItem x:Name ="cmbItemRequirementsOut" IsSelected="True">Requirements</ComboBoxItem>
                 <ComboBoxItem x:Name ="cmbItemDesignOut">Design</ComboBoxItem>
                 <ComboBoxItem x:Name ="cmbItemImplementationOut">Implementation</ComboBoxItem>
@@ -29,7 +29,7 @@
                 <ComboBoxItem x:Name ="cmbItemDeploymentOut">Deployment</ComboBoxItem>
                 <ComboBoxItem x:Name ="cmbItemCompletedOut">Completed</ComboBoxItem>
             </ComboBox>
-            <Button x:Name="btnAlter" Content="Alter" Margin="20" HorizontalAlignment="Center" Width="150" IsEnabled="False" />
+            <Button x:Name="btnAlter" Content="Alter" Margin="20" HorizontalAlignment="Center" Width="150" IsEnabled="True" Click="btnAlter_Click" />
             <Button x:Name="btnCloseWindow" Content="Close Window" Margin="20" HorizontalAlignment="Right" Width="100" Click="btnCloseWindow_Click" />
         </StackPanel>
         <!--End of stack panel-->
