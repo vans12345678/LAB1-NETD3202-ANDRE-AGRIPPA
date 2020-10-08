@@ -39,7 +39,7 @@
         <!--End of stack panel-->
         <!--Beginning of stack panel-->
         <StackPanel Grid.Column="1" Margin="50">
-            <ListBox x:Name ="lsbProjects" Margin="50" MouseDoubleClick="lsbProjects_MouseDoubleClick">
+            <ListBox x:Name ="lsbProjects" Margin="50" MouseDoubleClick="lsbProjects_MouseDoubleClick" DisplayMemberPath="ProjectName">
             </ListBox>
         </StackPanel>
         <!--End of stack panel-->

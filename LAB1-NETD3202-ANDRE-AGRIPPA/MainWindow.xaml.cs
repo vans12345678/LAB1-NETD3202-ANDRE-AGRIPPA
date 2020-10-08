@@ -6,6 +6,7 @@
  */
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Net.NetworkInformation;
 using System.Text;
@@ -31,15 +32,18 @@ namespace LAB1_NETD3202_ANDRE_AGRIPPA
         public MainWindow()
         {
             InitializeComponent();
+            lsbProjects.ItemsSource = projects;
         }
 
         //Create a new list of object project
-        private static List<Project> projects = new List <Project>();
+        public ObservableCollection <Project> projects = new ObservableCollection <Project>();
 
         //Called when user double clicks the create button
         private void btnCreate_Click(object sender, RoutedEventArgs e)
         {
             projects = ProjectCreate();
+            ClearText();
+
 
         }//End button click
 
@@ -48,11 +52,14 @@ namespace LAB1_NETD3202_ANDRE_AGRIPPA
         {
             //Get index of project selected and pass that project to a new window
             int selectedIndex = lsbProjects.SelectedIndex;
-            winProjectDisplay newWindowDisplay = new winProjectDisplay(projects[selectedIndex]);
+
+            winProjectDisplay newWindowDisplay = new winProjectDisplay(projects, selectedIndex, sender);
             newWindowDisplay.Show();
+
         }
 
-        public List<Project> ProjectCreate()
+        //VAldiates and creates an entry in the observable collection
+        public ObservableCollection<Project> ProjectCreate()
         {
             //Temporary variables used for projects
             string projectName;
@@ -105,13 +112,13 @@ namespace LAB1_NETD3202_ANDRE_AGRIPPA
 
                                         //Add to the project list, clear listbox projects items
                                         projects.Add(new Project(projectName, budget, spent, hoursRemaining, status));
-                                        lsbProjects.Items.Clear();
+                                        //lsbProjects.Items.Clear();
 
                                         //Add the project name to list box
-                                        for (int i = 0; i < projects.Count; i++)
-                                        {
-                                            lsbProjects.Items.Add(projects[i].ProjectName);
-                                        }
+                                        // for (int i = 0; i < projects.Count; i++)
+                                        // {
+                                            //lsbProjects.Items.Add(projects[i].ProjectName);
+                                        //}
 
                                     }
                                     //If hours remaining is negative
@@ -174,5 +181,14 @@ namespace LAB1_NETD3202_ANDRE_AGRIPPA
             return projects;
 
         }//End ProjectCreate
+        //Clears all text fields
+        public void ClearText()
+        {
+            txtHoursRemaining.Text = "";
+            txtBudget.Text = "";
+            txtSpent.Text = "";
+            txtProjectName.Text = "";
+        }
+
     }//End class
 }//End namespace
